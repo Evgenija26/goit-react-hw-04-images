@@ -10,7 +10,7 @@ export default function App() {
   const [searchName, setSearchName] = useState('');
   const [images, setImages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [error, setError] = useState(null);
+  const [error] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages] = useState(0);
 
@@ -19,7 +19,7 @@ export default function App() {
       return;
     }
     {
-      async function addImag es() {
+      async function addImages() {
         // const { searchName, currentPage } = this.state;
         try {
           setIsLoading({ isLoading: true });
@@ -38,8 +38,8 @@ export default function App() {
             error: '',
             totalPages: Math.ceil(data.totalHits / 12),
           }));
-        } catch (error) {
-          setError({ error: 'something went wrong' });
+        } catch {
+          error({ error: 'something went wrong' });
         } finally {
           setIsLoading({ isLoading: false });
         }
@@ -48,7 +48,7 @@ export default function App() {
     }
 
     return () => {};
-  }, [searchName, currentPage]);
+  }, [searchName, currentPage, error]);
 
   const loadMore = () => {
     setCurrentPage(prevState => ({
