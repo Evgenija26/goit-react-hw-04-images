@@ -4,7 +4,7 @@ import css from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const Modal = ({ largeImageURL, tags, onClose }) => {
+export default function Modal({ largeImageURL, tags, onClose }) {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -41,4 +41,4 @@ export const Modal = ({ largeImageURL, tags, onClose }) => {
     </div>,
     modalRoot
   );
-};
+}
