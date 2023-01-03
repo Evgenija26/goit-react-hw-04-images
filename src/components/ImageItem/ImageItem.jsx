@@ -1,11 +1,49 @@
+// import React, { Component } from 'react';
+// import css from './ImageItem.module.css';
+// import Modal from 'components/Modal';
+
+// export default class ImageItem extends Component {
+//   state = {
+//     showModal: false,
+//   };
+
+//   toggleModal = () => {
+//     this.setState(({ showModal }) => ({
+//       showModal: !showModal,
+//     }));
+//   };
+
+//   render() {
+//     const { showModal } = this.state;
+//     const { image } = this.props;
+
+//     return (
+//       <>
+//         <li className={css.ImageItem}>
+//           <img
+//             src={image.webformatURL}
+//             alt={image.tags}
+//             onClick={this.toggleModal}
+//             className={css.ImageGalleryItem__image}
+//           />
+//           {showModal && (
+//             <Modal
+//               largeImageURL={image.largeImageURL}
+//               tags={image.tags}
+//               onClose={this.toggleModal}
+//             />
+//           )}
+//         </li>
+//       </>
+//     );
+//   }
+// }
+
 import { useState } from 'react';
 import css from './ImageItem.module.css';
 import Modal from 'components/Modal';
 
 export default function ImageItem({ image }) {
-  // state = {
-  //   showModal: false,
-  // }
   const [showModal, setShoModal] = useState(false);
 
   const toggleModal = () => {
@@ -13,9 +51,6 @@ export default function ImageItem({ image }) {
       showModal: !showModal,
     }));
   };
-
-  // const { showModal } = this.state;
-  // const { image } = this.props;
 
   return (
     <>
@@ -30,7 +65,7 @@ export default function ImageItem({ image }) {
           <Modal
             largeImageURL={image.largeImageURL}
             tags={image.tags}
-            onClose={toggleModal}
+            onClick={toggleModal}
           />
         )}
       </li>

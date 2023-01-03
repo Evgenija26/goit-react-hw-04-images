@@ -5,9 +5,7 @@ import css from './SearchBar.module.css';
 export const SearchBar = ({ onSubmit }) => {
   const [searchName, setSearchName] = useState('');
 
-  const handleChange = event => {
-    setSearchName(event.currentTarget.value.toLowerCase());
-  };
+  const handleChange = e => setSearchName(e.currentTarget.value.toLowerCase());
 
   const handleSubmit = e => {
     e.preventDefault();
