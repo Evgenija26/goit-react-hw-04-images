@@ -18,38 +18,35 @@ export default function App() {
     if (searchName === '') {
       return;
     }
-    {
-      async function addImages() {
-        try {
-          setIsLoading(true);
-          const data = await API.getImages(searchName, currentPage);
 
-          if (data.hits.length === 0) {
-            alert('sorry image not found');
-            return;
-          }
+    async function addImages() {
+      try {
+        setIsLoading(true);
+        const data = await API.getImages(searchName, currentPage);
 
-          const normalizedImages = API.normalizedImages(data.hits);
-
-          setImages(prevImages => [...prevImages, ...normalizedImages]);
-          setIsLoading(false);
-          setError('');
-          setTotalPages(Math.ceil(data.totalHits / 12));
-        } catch {
-          error({ error: 'something went wrong' });
-        } finally {
-          setIsLoading(false);
+        if (data.hits.length === 0) {
+          alert('sorry image not found');
+          return;
         }
-      }
-      addImages();
-    }
 
-    return () => {};
+        const normalizedImages = API.normalizedImages(data.hits);
+
+        setImages(prevImages => [...prevImages, ...normalizedImages]);
+        setIsLoading(false);
+        setError('');
+        setTotalPages(Math.ceil(data.totalHits / 12));
+      } catch {
+        error({ error: 'something went wrong' });
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    addImages();
   }, [searchName, currentPage, error]);
 
   const loadMore = () => {
-    setCurrentPage(prevState => ({
-      currentPage: prevState.currentPage + 1,
+    setCurrentPage(prevPage => ({
+      currentPage: prevPage.currentPage + 1,
     }));
   };
 
