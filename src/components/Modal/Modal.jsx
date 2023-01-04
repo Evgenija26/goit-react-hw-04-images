@@ -11,6 +11,7 @@ export default function Modal({ largeImageURL, tags, onClose }) {
         onClose();
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
@@ -18,23 +19,14 @@ export default function Modal({ largeImageURL, tags, onClose }) {
     };
   }, [onClose]);
 
-  // componentDidMount() {
-  //   window.addEventListener('keydown', this.handleKeyDown);
-  // }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener('keydown', handleKeyDown);
-  // }
-
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
       onClose();
     }
   };
-  // const { largeImageURL, tags } = this.props;
 
   return createPortal(
-    <div className={css.Overlay} onClose={handleBackdropClick}>
+    <div className={css.Overlay} onClick={handleBackdropClick}>
       <div className={css.Modal}>
         <img src={largeImageURL} alt={tags} />
       </div>

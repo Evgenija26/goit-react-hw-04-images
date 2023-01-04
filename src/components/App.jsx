@@ -50,8 +50,8 @@ export default function App() {
     }));
   };
 
-  const handleSubmit = () => {
-    setSearchName(searchName);
+  const handleSubmit = query => {
+    setSearchName(query);
     setImages([]);
     setCurrentPage(1);
   };
@@ -75,7 +75,7 @@ export default function App() {
   );
 }
 
-//import { Component } from 'react';
+// import { Component } from 'react';
 // import { GlobalStyle } from './GlobalStyle';
 // import * as API from 'api';
 // import { ImageGallery } from './ImageGallery/ImageGallery';
