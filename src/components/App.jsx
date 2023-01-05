@@ -26,7 +26,7 @@ export default function App() {
         const data = await API.getImages(searchName, currentPage);
 
         if (data.hits.length === 0) {
-          alert('sorry image not found');
+          toast.info('sorry images not found');
           return;
         }
 
