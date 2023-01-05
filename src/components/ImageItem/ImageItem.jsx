@@ -3,12 +3,10 @@ import css from './ImageItem.module.css';
 import Modal from 'components/Modal';
 
 export default function ImageItem({ image }) {
-  const [showModal, setShoModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
-    setShoModal(({ showModal }) => ({
-      showModal: !showModal,
-    }));
+    setShowModal(prev => !prev);
   };
 
   return (
@@ -24,7 +22,7 @@ export default function ImageItem({ image }) {
           <Modal
             largeImageURL={image.largeImageURL}
             tags={image.tags}
-            onClose={setShoModal}
+            onClose={setShowModal}
           />
         )}
       </li>

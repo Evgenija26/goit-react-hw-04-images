@@ -12,17 +12,7 @@ export const getImages = async (query, page) => {
   return response.data;
 };
 
-export const normalizedImages = (imagesArray) =>
+export const normalizedImages = imagesArray =>
   imagesArray.map(({ id, tags, webformatURL, largeImageURL }) => {
     return { id, tags, webformatURL, largeImageURL };
   });
-
-  
-
-
-
-
-
-
-
-
